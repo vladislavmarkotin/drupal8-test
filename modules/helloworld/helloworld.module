@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @param $key
+ * @param $message
+ * @param $params
+ * Implements hook_mail()
+ */
+function ex_email_mail($key, &$message, $params) {
+
+    switch ($key) {
+        case 'ex_email_notify':
+            $message['subject'] = $params['subject'];
+            $message['body'][] = check_markup($params['message'], 'full_html');
+            break;
+    }
+
+}
